@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return 'view('welcome')';
+    return 'Home';
 });
+
+Route::get('/usuarios', 'UserController@index');
+
+//Se podria poner despues y sin where sin expresiones regulares
+Route::get('/usuarios/{id}', 'UserController@show')
+->where('id', '\d+');
+
+Route::get('/usuarios/nuevo', 'UserController@create');
+
+Route::get('/saludo/{name}/{nickname?}', 'WelcomeUserController');

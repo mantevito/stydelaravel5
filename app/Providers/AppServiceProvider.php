@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\Schema; //Añadido por error de key larga
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191); // Añadido por error de key larga
     }
 
     /**
