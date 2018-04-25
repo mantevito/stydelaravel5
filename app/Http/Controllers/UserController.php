@@ -17,29 +17,15 @@ class UserController extends Controller
 		}
 
 
-/*		$title= 'Listado de usuarios';
+		$title= 'Listado de usuarios';
 
-		dd(compact('title', 'users'));
+		return view('users.index', compact('title', 'users'));
 
-		return view('users', compact('title', 'users'));*/
-		return view('users')
-		->with('users', $users)
-		->with('title', 'Listado de usuarios');
-
-/*		return view('users')->with([
-			'users' => $users,
-			'title' => 'Listado de usuarios'
-		]);*/
-
-/*		return view('users',[
-			'users' => $users,
-			'title' => 'Listado de usuarios'
-		]);*/
 	}
     
    	public function show($id)
 	{
-		return "Mostrando detalle del usuario: {$id}";
+		return view('users.show', compact('id'));
 	}
 
 	public function create()
