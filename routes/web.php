@@ -16,12 +16,12 @@ Route::get('/', function () {
     return 'Home';
 });
 
-Route::get('/usuarios', 'UserController@index');
+Route::get('/usuarios', 'UserController@index')->name('users.index');
 
 //Se podria poner despues y sin where sin expresiones regulares
-Route::get('/usuarios/{id}', 'UserController@show')
+Route::get('/usuarios/{id}', 'UserController@show')->name('users.show')
 ->where('id', '\d+');
 
-Route::get('/usuarios/nuevo', 'UserController@create');
+Route::get('/usuarios/nuevo', 'UserController@create')->name('create');
 
-Route::get('/saludo/{name}/{nickname?}', 'WelcomeUserController');
+Route::get('/saludo/{name}/{nickname?}', 'WelcomeUserController')->name('users');
