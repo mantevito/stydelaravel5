@@ -64,9 +64,26 @@ class UsersModuleTest extends TestCase
     /** @test */
     function it_loads_the_new_users_page()
     {
-        $this->withoutExceptionHandling();
         $this->get('/usuarios/nuevo')
         ->assertStatus(200)
         ->assertSee('Crear nuevo usuario');
+    }
+
+    /** @test */
+    function it_creates_a_new_user()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->post('/usuarios/',[
+            'name' => 'Duilio',
+            'email' => 'duilio@styde.net',
+            'password' => '123456'
+        ])->assertRedirect('usuarios');
+
+        $this->assertCredentials([
+            'name' => 'Duilio',
+            'email' => 'duilio@styde.net',
+            'password' => '123456'
+        ]);
     }
 }
