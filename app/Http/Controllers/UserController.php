@@ -38,9 +38,9 @@ class UserController extends Controller
 		$data = request()->all();
 
 		User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => bcrypt($data['password'])
+			'name' => $data['nombre'],
+			'email' => $data['correo'],
+			'password' => bcrypt($data['clave'])
 		]);
 
         return redirect()->route('users.index');

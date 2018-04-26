@@ -8,6 +8,16 @@
 
 <form method="POST" action="{{ url('usuarios') }}">
     {!! csrf_field() !!}
+
+    <label for="name">Nombre:</label>
+    <input type="text" name="nombre" id="name" placeholder="Pedro Perez">
+
+    <label for="email">Email:</label>
+    <input type="email" name="correo" id="email" placeholder="pedro@example.com">
+
+    <label for="password">Contraseña:</label>
+    <input type="password" name="clave" id="password"placeholder="Mayor a 6 caracteres">
+
     <button type="submit">Crear usuario</button>
 </form>
 
