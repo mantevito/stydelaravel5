@@ -19,8 +19,8 @@ Route::get('/', function () {
 Route::get('/usuarios', 'UserController@index')->name('users.index');
 
 //Se podria poner despues y sin where sin expresiones regulares
-Route::get('/usuarios/{id}', 'UserController@show')->name('users.show')
-->where('id', '\d+');
+Route::get('/usuarios/{user}', 'UserController@show')->name('users.show')
+->where('user', '\d+');
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('create');
 
