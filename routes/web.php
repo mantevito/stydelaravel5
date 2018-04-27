@@ -24,6 +24,8 @@ Route::get('/usuarios/{user}', 'UserController@show')->name('users.show')
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('create');
 
+Route::get('/usuarios/{user}/editar', 'UserController@edit');
+
 Route::post('/usuarios', 'UserController@store');
 
 
