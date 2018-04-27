@@ -256,18 +256,27 @@ class UsersModuleTest extends TestCase
     }
 
     /** @test */
-    function the_password_is_required_when_updating_the_user()
+    function the_password_is_optional_when_updating_the_user()
     {
-        $user = factory(User::class)->create();
+        $oldPassword = 'CLAVE_ANTERIOR';
 
-        $this->from("usuarios/{$user->id}/editar/")
+        $user = factory(User::class)->create([
+            'password' => bcrypt($oldPassword)
+        ]);
+
+        $this->from("usuarios/{$user->id}/editar")
             ->put("usuarios/{$user->id}",[
                 'name' => 'Duilio',
                 'email' => 'duilio@styde.net',
                 'password' => ''
-            ])->assertRedirect("usuarios/{$user->id}/editar/")
-            ->assertSessionHasErrors(['password']);
+            ])
+            ->assertRedirect("usuarios/{$user->id}");
 
-        $this->assertDatabaseMissing('users', ['email' => 'duilio@styde.net']);
+        $this->assertCredentials([
+            'name' => 'Duilio',
+            'email' => 'duilio@styde.net',
+            'password' => $oldPassword
+        ]);
+
     }
 }
