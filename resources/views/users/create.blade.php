@@ -10,13 +10,13 @@
     {!! csrf_field() !!}
 
     <label for="name">Nombre:</label>
-    <input type="text" name="nombre" id="name" placeholder="Pedro Perez">
+    <input type="text" name="name" id="name" placeholder="Pedro Perez">
 
     <label for="email">Email:</label>
-    <input type="email" name="correo" id="email" placeholder="pedro@example.com">
+    <input type="email" name="email" id="email" placeholder="pedro@example.com">
 
     <label for="password">Contraseña:</label>
-    <input type="password" name="clave" id="password"placeholder="Mayor a 6 caracteres">
+    <input type="password" name="password" id="password"placeholder="Mayor a 6 caracteres">
 
     <button type="submit">Crear usuario</button>
 </form>
