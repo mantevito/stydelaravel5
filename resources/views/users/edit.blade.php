@@ -17,14 +17,15 @@
 
     @endif
 
-    <form method="POST" action="{{ url('usuarios') }}">
+    <form method="POST" action="{{ url("usuarios/{$user->id}") }}">
+        {!! method_field('PUT') !!}
         {!! csrf_field() !!}
 
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name" placeholder="Pedro Perez" value="{{old('name', $user->name)}}">
 
         <label for="email">Correo electrónico:</label>
-        <input type="email" name="email" id="email" placeholder="pedro@example.com" value="{{old('email', $user->name)}}">
+        <input type="email" name="email" id="email" placeholder="pedro@example.com" value="{{old('email', $user->email)}}">
 
         <label for="password">Contraseña:</label>
         <input type="password" name="password" id="password"placeholder="Mayor a 6 caracteres">
