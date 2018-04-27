@@ -36,16 +36,12 @@ class UserController extends Controller
 	public function store()
     {
 		$data = request()->validate([
-		    'name' => 'required'
+		    'name' => 'required',
+            'email' => ['required', 'email', 'unique:users,email,size:6'],//quitar size:6 si da error
+            'password' => 'required',
         ], [
             'name.required' => 'El campo nombre es obligatorio'
         ]);
-
-//		if(empty($data['name'])){
-//		    return redirect('usuarios/nuevo')->withErrors([
-//		        'name' => 'El campo nombre es obligatorio'
-//            ]);
-//        }
 
 		User::create([
 			'name' => $data['name'],
